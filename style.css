@@ -1,0 +1,64 @@
+.period.group, .bookend {
+	float: left;
+}
+
+.bookend.start:after {
+	content: " (start)";
+}
+
+.bookend.end:after {
+	content: " (end)";
+}
+
+.card {
+	border: solid black 1px;
+	width: 10em;
+	min-height: 16em;
+	margin: 1em;
+	padding: 0.5em;
+	font-size: 1em;
+	
+	text-align:center;
+	content-align:center;
+	
+	display:block;
+	border-left:auto;
+	border-right:auto;
+	
+	background-attachment:local;
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	background-size: 9em 9em;
+}
+
+.card.light {
+	background-image:url('light.svg');
+}
+
+.card.dark {
+	background-image:url('dark.svg');
+}
+
+.period.group {
+
+}
+
+.period.card, .scene.card {
+	margin-left: 4em;
+	margin-right: 4em;
+}
+
+.scene.card {
+	font-size: 1em;
+	background-size: 3em 3em;
+}
+
+.event.group {
+	
+}
+
+.event.card {
+	width: 16em;
+	min-height: 10em;
+	background-size: 6em 6em;
+}
