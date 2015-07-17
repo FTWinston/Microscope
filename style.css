@@ -2,11 +2,11 @@
 	float: left;
 }
 
-.bookend.start:after {
+.group.bookend.start .card:after {
 	content: " (start)";
 }
 
-.bookend.end:after {
+.group.bookend.end .card:after {
 	content: " (end)";
 }
 
@@ -32,15 +32,11 @@
 }
 
 .card.light {
-	background-image:url('light.svg');
+	background-image:url("light.svg");
 }
 
 .card.dark {
-	background-image:url('dark.svg');
-}
-
-.period.group {
-
+	background-image:url("dark.svg");
 }
 
 .period.card, .scene.card {
@@ -53,12 +49,57 @@
 	background-size: 3em 3em;
 }
 
-.event.group {
-	
-}
-
 .event.card {
 	width: 16em;
 	min-height: 10em;
 	background-size: 6em 6em;
 }
+
+#toolbox {
+	position:fixed;
+	top:18em;
+	left:0em;
+	margin:1em;
+	padding: 0.5em;
+	border: dashed grey 1px;
+	width: 10em;
+	min-height: 16em;
+}
+
+body {
+	margin:0; padding: 0;
+}
+
+.group {
+	position:relative;
+}
+
+#cardLayout[mode="Period"]  .group.period:hover::after, #cardLayout[mode="Period"]  .group.bookend.start:hover::after{
+	content: "";
+	width: 2em;
+	height: 16em;
+	position: absolute;
+	top: 1em;
+	right: 0em;
+	background: url(light.svg);
+}
+
+#cardLayout[mode="Event"]  .group.event:hover::after, #cardLayout[mode="Event"]  .group.period:hover::after{
+	content: "";
+	width: 16em;
+	height: 2em;
+	position: absolute;
+	bottom: 0em;
+	left: 0em;
+	background: url(light.svg);
+}
+
+#cardLayout[mode="Event"]  .card.event:hover, #cardLayout[mode="Event"]  .card.period:hover {
+	background-color: #ffdddd;
+}
+
+#cardLayout[mode="Scene"]  .card.scene:hover, #cardLayout[mode="Scene"]  .card.event:hover {
+	background-color: #ffdddd;
+}
+
+/* p:nth-last-child(2) */
