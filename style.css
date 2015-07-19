@@ -1,4 +1,4 @@
-.period.group, .bookend {
+.period.group, .bookend, .periodPlaceholder {
 	float: left;
 }
 
@@ -45,7 +45,7 @@
 	border: solid black 1px;
 }
 	
-.period.card, .scene.card {
+.period.card, .scene.card, .periodPlaceholder, .scenePlaceholder  {
 	margin-left: 4em;
 	margin-right: 4em;
 }
@@ -55,14 +55,10 @@
 	background-size: 3em 3em;
 }
 
-.event.card {
+.event.card, .eventPlaceholder  {
 	width: 16em;
 	min-height: 10em;
 	background-size: 6em 6em;
-}
-
-.placeholder.card {
-	float:left;
 }
 
 #toolbox {
@@ -75,10 +71,17 @@
 	width: 10em;
 	min-height: 16em;
 	border-radius: 6px;
+	background-color:#fcfcfc;
+	z-index: 9998
 }
 
-#toolbox ul li[active] {
-	font-weight:bold;
+#newest {
+	z-index: 9999;
+}
+
+#toolbox ul li {
+	margin-bottom: 1em;
+	text-decoration: underline;
 }
 
 body {
