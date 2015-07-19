@@ -11,7 +11,6 @@
 }
 
 .card {
-	border: solid black 1px;
 	width: 10em;
 	min-height: 16em;
 	margin: 1em;
@@ -29,6 +28,8 @@
 	background-position:center bottom;
 	background-repeat:no-repeat;
 	background-size: 9em 9em;
+	
+	border-radius: 6px;
 }
 
 .card.light {
@@ -39,6 +40,11 @@
 	background-image:url("dark.svg");
 }
 
+.bookend.card, .period.card, .event.card, .scene.card{
+	background-color: white;
+	border: solid black 1px;
+}
+	
 .period.card, .scene.card {
 	margin-left: 4em;
 	margin-right: 4em;
@@ -55,6 +61,10 @@
 	background-size: 6em 6em;
 }
 
+.placeholder.card {
+	float:left;
+}
+
 #toolbox {
 	position:fixed;
 	top:18em;
@@ -64,42 +74,18 @@
 	border: dashed grey 1px;
 	width: 10em;
 	min-height: 16em;
+	border-radius: 6px;
+}
+
+#toolbox ul li[active] {
+	font-weight:bold;
 }
 
 body {
 	margin:0; padding: 0;
+	background-color:#fcfcfc;
 }
 
 .group {
 	position:relative;
 }
-
-#cardLayout[mode="Period"]  .group.period:hover::after, #cardLayout[mode="Period"]  .group.bookend.start:hover::after{
-	content: "";
-	width: 2em;
-	height: 16em;
-	position: absolute;
-	top: 1em;
-	right: 0em;
-	background: url(light.svg);
-}
-
-#cardLayout[mode="Event"]  .group.event:hover::after, #cardLayout[mode="Event"]  .group.period:hover::after{
-	content: "";
-	width: 16em;
-	height: 2em;
-	position: absolute;
-	bottom: 0em;
-	left: 0em;
-	background: url(light.svg);
-}
-
-#cardLayout[mode="Event"]  .card.event:hover, #cardLayout[mode="Event"]  .card.period:hover {
-	background-color: #ffdddd;
-}
-
-#cardLayout[mode="Scene"]  .card.scene:hover, #cardLayout[mode="Scene"]  .card.event:hover {
-	background-color: #ffdddd;
-}
-
-/* p:nth-last-child(2) */

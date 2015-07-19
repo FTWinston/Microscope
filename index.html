@@ -3,18 +3,21 @@
 <head>
 <title>Microscope online</title>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
 <div id="toolbox">
-	<p>This is the toolbox</p>
+	<p>Drag to add a new:</p>
 	<ul>
-		<li>add <span class="value">Period</span></li>
-		<li>add <span class="value">Event</span></li>
-		<li>add <span class="value">Scene</span></li>
+		<li id="addPeriod">Period</li>
+		<li id="addEvent">Event</li>
+		<li id="addScene">Scene</li>
 	</ul>
+	<p>Once you've placed it, click to write on it, and double-click to toggle it light/dark</p>
 </div>
 
 <div id="cardLayout">
@@ -81,5 +84,6 @@
 		</div>
 	</div>
 </div>
+
 </body>
 </html>
