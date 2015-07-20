@@ -5,21 +5,15 @@ $(function() {
 	
 	// adding periods
 	setupAdding('#addPeriod', '#cardLayout', 'period', true, 48, 0);
-	setupSortable('#cardLayout', 'period', true, function (obj) {
-		// initialize event sorting within this new period
-		setupSortable('#cardLayout .group.period', 'event', true, undefined, obj);
-	});
+	setupSortable('#cardLayout', 'period', true, addedNewPeriod);
 	
 	// adding events
 	setupAdding('#addEvent', '#cardLayout .group.period', 'event', true, 248, 0);
-	setupSortable('#cardLayout .group.period', 'event', true, function (obj) {
-		// initialize scene sorting within this new event
-		setupSortable('#cardLayout .group.event', 'scene', true, undefined, obj);
-	});
+	setupSortable('#cardLayout .group.period', 'event', true, addedNewEvent);
 	
 	// adding scenes
 	setupAdding('#addScene', '#cardLayout .group.event', 'scene', false, 258, 306);
-	setupSortable('#cardLayout .group.event', 'scene', false);
+	setupSortable('#cardLayout .group.event', 'scene', false, addedNewScene);
 });
 
 function setupSortable(rootSelector, cardType, useGroups, addComplete, rootObject) {
@@ -46,8 +40,18 @@ function setupSortable(rootSelector, cardType, useGroups, addComplete, rootObjec
 
 function setupAdding(buttonSelector, rootSelector, cardType, useGroups, addOffsetX, addOffsetY) {
 	$(buttonSelector).mousedown(function (e) {
+		if (e.which != 1)
+			return;
+		if (cantAddEvents && cardType == 'event')
+			return;
+		if (cantAddScenes && cardType == 'scene')
+			return;
+	
 		var appendTo = $(rootSelector + ':first');
 		var newCard = $('<div/>', {class: cardType + ' card light', contenteditable:'true'});
+		
+		$(rootSelector).sortable('option', 'disabled', false);
+		appendTo.sortable('refresh');
 		
 		var newRoot;
 		if (useGroups) {
@@ -59,9 +63,6 @@ function setupAdding(buttonSelector, rootSelector, cardType, useGroups, addOffse
 			newCard.appendTo(appendTo);
 			newRoot = newCard;
 		}
-		
-		appendTo.sortable('refresh');
-		$(rootSelector).sortable('option', 'disabled', false);
 		
 		var pos = $('#toolbox').position();
 		newRoot.attr('id', 'newest');
@@ -75,4 +76,32 @@ function setupAdding(buttonSelector, rootSelector, cardType, useGroups, addOffse
 		
 		return false;
 	});
+}
+
+var cantAddEvents = true, cantAddScenes = true;
+
+function addedNewPeriod(obj) {
+	// initialize event sorting within this new period
+	setupSortable('#cardLayout .group.period', 'event', true, addedNewEvent, obj);
+	
+	// allow adding events, if disabled
+	if (cantAddEvents) {
+		$('#addEvent').removeClass('disabled');
+		cantAddEvents = false;
+	}
+}
+
+function addedNewEvent(obj) {
+	// initialize scene sorting within this new event
+	setupSortable('#cardLayout .group.event', 'scene', false, undefined, obj);
+	
+	// allow adding scenes, if disabled
+	if (cantAddScenes) {
+		$('#addScene').removeClass('disabled');
+		cantAddScenes = false;
+	}
+}
+
+function addedNewScene(obj) {
+	
 }

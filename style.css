@@ -82,6 +82,13 @@
 #toolbox ul li {
 	margin-bottom: 1em;
 	text-decoration: underline;
+	cursor: all-scroll;
+}
+
+#toolbox ul li.disabled {
+	text-decoration: line-through;
+	color: grey;
+	cursor: not-allowed;
 }
 
 body {
