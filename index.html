@@ -19,9 +19,14 @@
 		<button id="bigPictureOk">OK</button>
 	</div>
 	<div id="bookendTools" style="display:none">
-		<p>Describe the "bookends" of your history, and give them a light or dark tone by double clicking</p>
+		<p>Describe the "bookends" of your history, and give them a light or dark tone by double clicking.</p>
 		
 		<button id="bookendOk">OK</button>
+	</div>
+	<div id="paletteTools" style="display:none">
+		<p>Enter items that are to be explicitly allowed/disallowed in your history in the palette.</p>
+		
+		<button id="paletteOk">OK</button>
 	</div>
 	<div id="activeTools" style="display:none">
 		<p>Drag to add a new card:</p>
@@ -30,7 +35,8 @@
 			<li id="addEvent" class="disabled">Event</li>
 			<li id="addScene" class="disabled">Scene</li>
 		</ul>
-		<p>Once you've placed it, click to write on it, and double-click to toggle it light/dark</p>
+		<p>Once you've placed it, click to write on it, and double-click to toggle it light/dark.</p>
+		<p id="showPalette">Click to view the palette</p>
 	</div>
 </div>
 	
@@ -49,6 +55,9 @@
 		</div>
 	</div>
 </div>
+
+<div id="palette" contenteditable="true" style="display:none;"></div>
+<div id="mask" style="display:none;"></div>
 
 </body>
 </html>

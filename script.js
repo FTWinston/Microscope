@@ -25,14 +25,30 @@ $(function() {
 		
 		$('#bigPictureTools').slideUp();
 		$('#bookendTools, #cardLayout').slideDown();
+		
+		$('.bookend.card.start').focus();
 	});
 	
 	$('#bookendOk').click(function () {
 		$('.card.bookend').removeAttr('contenteditable');
 		
 		$('#bookendTools').slideUp();
+		$('#paletteTools, #palette').slideDown();
+		
+		$('#palette').focus();
+	});
+	
+	$('#paletteOk').click(function () {
+		$('#palette').removeAttr('contenteditable').addClass('active').hide();
+
+		$('#paletteTools, #palette').slideUp();
 		$('#activeTools').slideDown();
 	});
+	
+	$('#showPalette').click(function () {
+		$('#palette, #mask').show();
+		$('#mask').one('click', function () { $('#palette, #mask').hide(); });
+	})
 	
 	$('#bigPicture').focus();
 });
