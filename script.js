@@ -4,8 +4,8 @@ $(function() {
 	})
 	
 	// adding periods
-	setupAdding('#addPeriod', '#cardLayout', 'period', true, 48, 0);
-	setupSortable('#cardLayout', 'period', true, addedNewPeriod);
+	setupAdding('#addPeriod', '#periodRoot', 'period', true, 48, 0);
+	setupSortable('#periodRoot', 'period', true, addedNewPeriod);
 	
 	// adding events
 	setupAdding('#addEvent', '#cardLayout .group.period', 'event', true, 248, 0);
@@ -14,6 +14,27 @@ $(function() {
 	// adding scenes
 	setupAdding('#addScene', '#cardLayout .group.event', 'scene', false, 258, 306);
 	setupSortable('#cardLayout .group.event', 'scene', false, addedNewScene);
+	
+	$('#bigPictureOk').click(function () {
+		var bp = $('#bigPicture');
+		
+		if (bp.text().trim() == '')
+			return; // must enter some text
+		
+		bp.removeAttr('contenteditable');
+		
+		$('#bigPictureTools').slideUp();
+		$('#bookendTools, #cardLayout').slideDown();
+	});
+	
+	$('#bookendOk').click(function () {
+		$('.card.bookend').removeAttr('contenteditable');
+		
+		$('#bookendTools').slideUp();
+		$('#activeTools').slideDown();
+	});
+	
+	$('#bigPicture').focus();
 });
 
 function setupSortable(rootSelector, cardType, useGroups, addComplete, rootObject) {

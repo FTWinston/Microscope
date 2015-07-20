@@ -1,3 +1,13 @@
+#bigPicture {
+	font-size: 2em;
+	text-align:center;
+	height: 1.5em;
+}
+
+#bigPicture[contentEditable=true]:empty:not(:focus):before{
+	content:"click here to enter your Big Picture"
+}
+
 .period.group, .bookend, .periodPlaceholder {
 	float: left;
 }
@@ -63,7 +73,7 @@
 
 #toolbox {
 	position:fixed;
-	top:18em;
+	top:21em;
 	left:0em;
 	margin:1em;
 	padding: 0.5em;

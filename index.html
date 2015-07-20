@@ -10,29 +10,43 @@
 </head>
 <body>
 
+<div id="bigPicture" contenteditable="true"></div>
+
 <div id="toolbox">
-	<p>Drag to add a new card:</p>
-	<ul>
-		<li id="addPeriod">Period</li>
-		<li id="addEvent" class="disabled">Event</li>
-		<li id="addScene" class="disabled">Scene</li>
-	</ul>
-	<p>Once you've placed it, click to write on it, and double-click to toggle it light/dark</p>
-</div>
-
-<div class="bookend group start">
-	<div class="bookend card light" contenteditable="true">
-
+	<div id="bigPictureTools">
+		<p>Enter a "big picture" sentence to describe your history.</p>
+		
+		<button id="bigPictureOk">OK</button>
+	</div>
+	<div id="bookendTools" style="display:none">
+		<p>Describe the "bookends" of your history, and give them a light or dark tone by double clicking</p>
+		
+		<button id="bookendOk">OK</button>
+	</div>
+	<div id="activeTools" style="display:none">
+		<p>Drag to add a new card:</p>
+		<ul>
+			<li id="addPeriod">Period</li>
+			<li id="addEvent" class="disabled">Event</li>
+			<li id="addScene" class="disabled">Scene</li>
+		</ul>
+		<p>Once you've placed it, click to write on it, and double-click to toggle it light/dark</p>
 	</div>
 </div>
 	
-<div id="cardLayout">
+<div id="cardLayout" style="display:none;">
+	<div class="bookend group start">
+		<div class="bookend card light" contenteditable="true">
 
-</div>
+		</div>
+	</div>
+	
+	<div id="periodRoot"></div>
+	
+	<div class="bookend group end">
+		<div class="bookend card dark" contenteditable="true">
 
-<div class="bookend group end">
-	<div class="bookend card dark" contenteditable="true">
-
+		</div>
 	</div>
 </div>
 
